@@ -4,10 +4,11 @@ import com.app.mapper.AdPromotionMapper;
 import com.app.pojo.AdPromotion;
 import com.app.service.AdPromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-
+@Service("adPromotionServiceImpl")
 public class AdPromotionServiceImpl implements AdPromotionService {
     @Autowired(required = false)
     private AdPromotionMapper adPromotionMapper;

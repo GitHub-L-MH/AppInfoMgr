@@ -4,10 +4,11 @@ import com.app.mapper.AppInfoMapper;
 import com.app.pojo.AppInfo;
 import com.app.service.AppInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-
+@Service("appInfoServiceImpl")
 public class AppInfoServiceImpl implements AppInfoService {
     @Autowired(required = false)
     private AppInfoMapper appInfoMapper;

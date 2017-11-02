@@ -1,9 +1,11 @@
 package com.app.service;
 
 import com.app.pojo.AdPromotion;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+
 
 public interface AdPromotionService {
     /**

@@ -4,10 +4,12 @@ import com.app.mapper.DataDictionaryMapper;
 import com.app.pojo.DataDictionary;
 import com.app.service.DataDictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
+@Service("dataDictionaryService")
 public class DataDictionaryServiceImpl implements DataDictionaryService {
     @Autowired(required = false)
     private DataDictionaryMapper dataDictionaryMapper;

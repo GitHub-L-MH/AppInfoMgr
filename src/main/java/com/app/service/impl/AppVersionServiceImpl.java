@@ -4,10 +4,11 @@ import com.app.mapper.AppVersionMapper;
 import com.app.pojo.AppVersion;
 import com.app.service.AppVersionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-
+@Service("appVersionServiceImpl")
 public class AppVersionServiceImpl implements AppVersionService {
     @Autowired(required = false)
     private AppVersionMapper appVersionMapper;

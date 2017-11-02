@@ -4,10 +4,11 @@ import com.app.mapper.AppCategoryMapper;
 import com.app.pojo.AppCategory;
 import com.app.service.AppCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-
+@Service("appCategoryServiceImpl")
 public class AppCategoryServiceImpl implements AppCategoryService {
     @Autowired(required = false)
     private AppCategoryMapper appCategoryMapper;

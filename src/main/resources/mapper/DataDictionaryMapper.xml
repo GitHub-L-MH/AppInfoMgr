@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.smbms.mapper.DataDictionaryMapper">
+<mapper namespace="com.app.mapper.DataDictionaryMapper">
     <insert id="add" parameterType="DataDictionary">
         INSERT INTO data_dictionary
         (

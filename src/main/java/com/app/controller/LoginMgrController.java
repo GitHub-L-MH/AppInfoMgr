@@ -4,9 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/AppInfoSystem")
 public class LoginMgrController {
-    @RequestMapping(value = "/AppInfoSystem")
+    @RequestMapping(value = "/dev/login")
     public String sendIndex(){
-        return "index";
+        return "devlogin";
     }
+
+
 }

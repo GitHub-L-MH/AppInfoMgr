@@ -4,10 +4,12 @@ import com.app.mapper.BackendUserMapper;
 import com.app.pojo.BackendUser;
 import com.app.service.BackendUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
+@Service("backendUserService")
 public class BackendUserServiceImpl implements BackendUserService {
     @Autowired(required = false)
     private BackendUserMapper backendUserMapper;

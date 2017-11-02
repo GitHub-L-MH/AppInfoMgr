@@ -4,10 +4,12 @@ import com.app.mapper.DevUserMapper;
 import com.app.pojo.DevUser;
 import com.app.service.DevUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
+@Service("devUserService")
 public class DevUserServiceImpl implements DevUserService {
     @Autowired(required = false)
     private DevUserMapper devUserMapper;
