@@ -7,13 +7,16 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-<div id="aaaaa">${pageContext.request.contextPath }</div>
-<input type="hidden" id="path" name="path" value="${pageContext.request.contextPath }"/>
+<input type="hidden" id="path" name="path" value="<%=basePath%>"/>
 <script type="text/javascript" src="${pageContext.request.contextPath }/statics/js/jquery-1.8.3-mh-community.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/statics/js/common.js"></script>
 </body>

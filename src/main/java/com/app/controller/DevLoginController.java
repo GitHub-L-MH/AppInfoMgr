@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -27,6 +28,7 @@ public class DevLoginController extends BaseController {
     private JSONData jsonData = new JSONData();
 
     @RequestMapping(value = "/login.action")
+    @ResponseBody
     public BaseResult login(@RequestParam(value = "devCode") String devCode,
                             @RequestParam(value = "devPwd") String devPwd,
                             HttpSession session){
@@ -35,7 +37,7 @@ public class DevLoginController extends BaseController {
         if (devUserService.getDevUserCount(mapParams) != 1){
             jsonData.setStatus(String.valueOf(CurStatus.USERNAME_ERROR));
             jsonData.setMessage("请检查用户名");
-            return buildSuccessResultInfo(jsonData);
+            return buildFailedResultInfo(HTTPStatus.ACCEPTED,"请检查用户名",String.valueOf(CurStatus.USERNAME_ERROR));
         }
         mapParams.put("devPassword",devPwd);
         if (devUserService.getDevUserCount(mapParams) != 1){

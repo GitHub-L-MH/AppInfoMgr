@@ -40,29 +40,26 @@
 <script type="text/javascript">
     $(function () {
         $(".btn-primary").click(function () {
-            console.log(path);
             $.ajax({
                 type:"post",
-                url:"../../../devLogin/login.action",
+                url:path+"devLogin/login.action",
                 data:{
                     "devCode":$("#devCode").val(),
                     "devPwd":$("#devPwd").val()
                 },
                 dataType:"json",
                 success:function(data){
-                    console.log(data);
                     if (data.status == "200"){
                         $("#message").text("");
-                        console.log(path);
-                        location.href = "/devSystem/devHome";
-                    } else if (data.status == "10001") {
+                        location.href = path+"devSystem/devHome";
+                    } else if (data.errorCode == "10001") {
                         $("#message").text(data.message);
-                    } else if (data.status == "10002"){
+                    } else if (data.errorCode == "10002"){
                         $("#message").text(data.message);
                     }
                 },
                 error:function(data){
-
+                    location.href = path+"devSystem/error";
                 }
             });
         });

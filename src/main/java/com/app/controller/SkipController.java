@@ -10,4 +10,9 @@ public class SkipController {
     public String sendDevHome(){
         return "/developer/devhome";
     }
+
+    @RequestMapping("/error")
+    public String sendError(){
+        return "error.jsp";
+    }
 }
