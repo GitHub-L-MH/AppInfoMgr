@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smbms.mapper.AppCategoryMapper">
+    <insert id="add" parameterType="AppCategory">
+        INSERT INTO app_category
+        (
+            id,categoryCode,categoryName,parentId,createdBy,creationTime,modifyBy,modifyDate
+        )
+        VALUES
+        (
+            #{id},#{categoryCode},#{categoryName},#{parentId},#{createdBy},#{creationTime},#{modifyBy},#{modifyDate}
+        )
+    </insert>
+
+    <delete id="deleteAppCategoryById" parameterType="int">
+        DELETE FROM app_category WHERE id=#{id}
+    </delete>
+
+    <update id="update" parameterType="AppCategory">
+        UPDATE app_category
+        <trim prefix="set" suffixOverrides=",">
+           <if test="id != null">id = #{id},</if>
+           <if test="categoryCode != null">categoryCode = #{categoryCode},</if>
+           <if test="categoryName != null">categoryName = #{categoryName},</if>
+           <if test="parentId != null">parentId = #{parentId},</if>
+           <if test="createdBy != null">createdBy = #{createdBy},</if>
+           <if test="creationTime != null">creationTime = #{creationTime},</if>
+           <if test="modifyBy != null">modifyBy = #{modifyBy},</if>
+           <if test="modifyDate != null">modifyDate = #{modifyDate},</if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+
+    <select id="getAppCategoryCount" parameterType="map" resultType="int">
+        SELECT COUNT(1) FROM app_category
+        <include refid="appCategory_where" />
+    </select>
+
+    <select id="getAppCategoryById" parameterType="int" resultType="AppCategory">
+        SELECT * FROM app_category WHERE id=#{id}
+    </select>
+
+    <select id="getAppCategoryByMap" parameterType="map" resultType="AppCategory">
+        SELECT * FROM app_category
+        <include refid="appCategory_where" />
+    </select>
+
+    <select id="getAppCategoryListByObj" parameterType="map" resultType="AppCategory">
+        SELECT * from app_category
+        <include refid="appCategory_where" />
+    </select>
+
+    <select id="getAppCategoryPageByMap" parameterType="map" resultType="AppCategory">
+        SELECT * from app_category
+        <include refid="appCategory_where" />
+        limit #{currPageNo},#{pageSize}
+    </select>
+
+    <sql id="appCategory_where">
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">and id = #{id}</if>
+            <if test="categoryCode != null">and categoryCode = #{categoryCode}</if>
+            <if test="categoryName != null">and categoryName = #{categoryName}</if>
+            <if test="parentId != null">and parentId = #{parentId}</if>
+            <if test="createdBy != null">and createdBy = #{createdBy}</if>
+            <if test="creationTime != null">and creationTime = #{creationTime}</if>
+            <if test="modifyBy != null">and modifyBy = #{modifyBy}</if>
+            <if test="modifyDate != null">and modifyDate = #{modifyDate}</if>
+        </trim>
+    </sql>
+
+</mapper>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smbms.mapper.AdPromotionMapper">
+    <insert id="add" parameterType="AdPromotion">
+        INSERT INTO ad_promotion
+        (
+            id,appId,adPicPath,adPV,carouselPosition,startTime,endTime,createdBy,creationDate,modifyBy,modifyDate
+        )
+        VALUES
+        (
+            #{id},#{appId},#{adPicPath},#{adPV},#{carouselPosition},#{startTime},#{endTime},#{createdBy},#{creationDate},#{modifyBy},#{modifyDate}
+        )
+    </insert>
+
+    <delete id="deleteAdPromotionById" parameterType="int">
+        DELETE FROM ad_promotion WHERE id=#{id}
+    </delete>
+
+    <update id="update" parameterType="AdPromotion">
+        UPDATE ad_promotion
+        <trim prefix="set" suffixOverrides=",">
+           <if test="id != null">id = #{id},</if>
+           <if test="appId != null">appId = #{appId},</if>
+           <if test="adPicPath != null">adPicPath = #{adPicPath},</if>
+           <if test="adPV != null">adPV = #{adPV},</if>
+           <if test="carouselPosition != null">carouselPosition = #{carouselPosition},</if>
+           <if test="startTime != null">startTime = #{startTime},</if>
+           <if test="endTime != null">endTime = #{endTime},</if>
+           <if test="createdBy != null">createdBy = #{createdBy},</if>
+           <if test="creationDate != null">creationDate = #{creationDate},</if>
+           <if test="modifyBy != null">modifyBy = #{modifyBy},</if>
+           <if test="modifyDate != null">modifyDate = #{modifyDate},</if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+
+    <select id="getAdPromotionCount" parameterType="map" resultType="int">
+        SELECT COUNT(1) FROM ad_promotion
+        <include refid="adPromotion_where" />
+    </select>
+
+    <select id="getAdPromotionById" parameterType="int" resultType="AdPromotion">
+        SELECT * FROM ad_promotion WHERE id=#{id}
+    </select>
+
+    <select id="getAdPromotionByMap" parameterType="map" resultType="AdPromotion">
+        SELECT * FROM ad_promotion
+        <include refid="adPromotion_where" />
+    </select>
+
+    <select id="getAdPromotionListByObj" parameterType="map" resultType="AdPromotion">
+        SELECT * from ad_promotion
+        <include refid="adPromotion_where" />
+    </select>
+
+    <select id="getAdPromotionPageByMap" parameterType="map" resultType="AdPromotion">
+        SELECT * from ad_promotion
+        <include refid="adPromotion_where" />
+        limit #{currPageNo},#{pageSize}
+    </select>
+
+    <sql id="adPromotion_where">
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">and id = #{id}</if>
+            <if test="appId != null">and appId = #{appId}</if>
+            <if test="adPicPath != null">and adPicPath = #{adPicPath}</if>
+            <if test="adPV != null">and adPV = #{adPV}</if>
+            <if test="carouselPosition != null">and carouselPosition = #{carouselPosition}</if>
+            <if test="startTime != null">and startTime = #{startTime}</if>
+            <if test="endTime != null">and endTime = #{endTime}</if>
+            <if test="createdBy != null">and createdBy = #{createdBy}</if>
+            <if test="creationDate != null">and creationDate = #{creationDate}</if>
+            <if test="modifyBy != null">and modifyBy = #{modifyBy}</if>
+            <if test="modifyDate != null">and modifyDate = #{modifyDate}</if>
+        </trim>
+    </sql>
+
+</mapper>

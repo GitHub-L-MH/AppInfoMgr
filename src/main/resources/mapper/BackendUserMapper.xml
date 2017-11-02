@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smbms.mapper.BackendUserMapper">
+    <insert id="add" parameterType="BackendUser">
+        INSERT INTO backend_user
+        (
+            id,userCode,userName,userType,createdBy,creationDate,modifyBy,modifyDate,userPassword
+        )
+        VALUES
+        (
+            #{id},#{userCode},#{userName},#{userType},#{createdBy},#{creationDate},#{modifyBy},#{modifyDate},#{userPassword}
+        )
+    </insert>
+
+    <delete id="deleteBackendUserById" parameterType="int">
+        DELETE FROM backend_user WHERE id=#{id}
+    </delete>
+
+    <update id="update" parameterType="BackendUser">
+        UPDATE backend_user
+        <trim prefix="set" suffixOverrides=",">
+           <if test="id != null">id = #{id},</if>
+           <if test="userCode != null">userCode = #{userCode},</if>
+           <if test="userName != null">userName = #{userName},</if>
+           <if test="userType != null">userType = #{userType},</if>
+           <if test="createdBy != null">createdBy = #{createdBy},</if>
+           <if test="creationDate != null">creationDate = #{creationDate},</if>
+           <if test="modifyBy != null">modifyBy = #{modifyBy},</if>
+           <if test="modifyDate != null">modifyDate = #{modifyDate},</if>
+           <if test="userPassword != null">userPassword = #{userPassword},</if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+
+    <select id="getBackendUserCount" parameterType="map" resultType="int">
+        SELECT COUNT(1) FROM backend_user
+        <include refid="backendUser_where" />
+    </select>
+
+    <select id="getBackendUserById" parameterType="int" resultType="BackendUser">
+        SELECT * FROM backend_user WHERE id=#{id}
+    </select>
+
+    <select id="getBackendUserByMap" parameterType="map" resultType="BackendUser">
+        SELECT * FROM backend_user
+        <include refid="backendUser_where" />
+    </select>
+
+    <select id="getBackendUserListByObj" parameterType="map" resultType="BackendUser">
+        SELECT * from backend_user
+        <include refid="backendUser_where" />
+    </select>
+
+    <select id="getBackendUserPageByMap" parameterType="map" resultType="BackendUser">
+        SELECT * from backend_user
+        <include refid="backendUser_where" />
+        limit #{currPageNo},#{pageSize}
+    </select>
+
+    <sql id="backendUser_where">
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">and id = #{id}</if>
+            <if test="userCode != null">and userCode = #{userCode}</if>
+            <if test="userName != null">and userName = #{userName}</if>
+            <if test="userType != null">and userType = #{userType}</if>
+            <if test="createdBy != null">and createdBy = #{createdBy}</if>
+            <if test="creationDate != null">and creationDate = #{creationDate}</if>
+            <if test="modifyBy != null">and modifyBy = #{modifyBy}</if>
+            <if test="modifyDate != null">and modifyDate = #{modifyDate}</if>
+            <if test="userPassword != null">and userPassword = #{userPassword}</if>
+        </trim>
+    </sql>
+
+</mapper>
