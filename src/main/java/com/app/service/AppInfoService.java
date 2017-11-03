@@ -1,6 +1,7 @@
 package com.app.service;
 
 import com.app.pojo.AppInfo;
+import com.app.vo.AppInfoEx;
 
 import java.util.List;
 import java.util.Map;
@@ -60,4 +61,11 @@ public interface AppInfoService {
      * @return
      */
     List<AppInfo> getAppInfoPageByMap(Map<String, Object> map);
+
+    /**
+     * 分页查询app信息扩展
+     * @param map
+     * @return
+     */
+    List<AppInfoEx> getAppInfoExPageByMap(Map<String,Object> map);
 }

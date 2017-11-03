@@ -3,6 +3,7 @@ package com.app.service.impl;
 import com.app.mapper.AppInfoMapper;
 import com.app.pojo.AppInfo;
 import com.app.service.AppInfoService;
+import com.app.vo.AppInfoEx;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +55,11 @@ public class AppInfoServiceImpl implements AppInfoService {
     @Override
     public List<AppInfo> getAppInfoPageByMap(Map<String, Object> map) {
         return appInfoMapper.getAppInfoPageByMap(map);
+    }
+
+    @Override
+    public List<AppInfoEx> getAppInfoExPageByMap(Map<String, Object> map) {
+        return appInfoMapper.getAppInfoExPageByMap(map);
     }
 
     @Override

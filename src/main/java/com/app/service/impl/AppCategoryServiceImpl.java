@@ -2,6 +2,7 @@ package com.app.service.impl;
 
 import com.app.mapper.AppCategoryMapper;
 import com.app.pojo.AppCategory;
+import com.app.pojo.DataDictionary;
 import com.app.service.AppCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,5 +60,10 @@ public class AppCategoryServiceImpl implements AppCategoryService {
     @Override
     public AppCategory getAppCategoryByMap(Map<String, Object> map) {
         return appCategoryMapper.getAppCategoryByMap(map);
+    }
+
+    @Override
+    public List<AppCategory> getCategoryLevel1List() {
+        return appCategoryMapper.getCategoryLevel1List();
     }
 }

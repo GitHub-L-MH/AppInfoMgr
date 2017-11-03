@@ -59,6 +59,7 @@
         limit #{currPageNo},#{pageSize}
     </select>
 
+
     <sql id="dataDictionary_where">
         <trim prefix="where" prefixOverrides="and | or">
             <if test="id != null">and id = #{id}</if>

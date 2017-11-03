@@ -1,6 +1,7 @@
 package com.app.mapper;
 
 import com.app.pojo.AppCategory;
+import com.app.pojo.DataDictionary;
 
 import java.util.List;
 import java.util.Map;
@@ -61,4 +62,10 @@ public interface AppCategoryMapper {
      * @return
      */
     List<AppCategory> getAppCategoryPageByMap(Map<String,Object> map);
+
+    /**
+     * 查询一级分类
+     * @return
+     */
+    List<AppCategory> getCategoryLevel1List();
 }

@@ -33,6 +33,10 @@
         WHERE id=#{id}
     </update>
 
+    <select id="getCategoryLevel1List" resultType="com.app.pojo.AppCategory">
+        SELECT * from app_category where parentId is NULL
+    </select>
+
     <select id="getAppCategoryCount" parameterType="map" resultType="int">
         SELECT COUNT(1) FROM app_category
         <include refid="appCategory_where" />
