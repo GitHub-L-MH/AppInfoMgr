@@ -83,6 +83,7 @@
         (select d.valueName from data_dictionary d where d.typeCode='APP_FLATFORM' and d.valueId = i.flatformId) flatformName
         from app_info i
         <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="id != null">AND i.id = #{id}</if>
             <if test="softwareName != null">AND softwareName LIKE concat('%',#{softwareName},'%')</if>
             <if test="status != null and status != 0">AND status = #{status}</if>
             <if test="flatformId != null and flatformId != null">AND flatformId = #{flatformId}</if>
@@ -96,7 +97,7 @@
     <sql id="appInfo_where">
         <trim prefix="where" prefixOverrides="and | or">
             <if test="id != null">and id = #{id}</if>
-            <if test="softwareName != null">and softwareName = #{softwareName}</if>
+            <if test="softwareName != null">and softwareName LIKE concat('%',#{softwareName},'%')</if>
             <if test="aPKName != null">and APKName = #{aPKName}</if>
             <if test="supportROM != null">and supportROM = #{supportROM}</if>
             <if test="interfaceLanguage != null">and interfaceLanguage = #{interfaceLanguage}</if>

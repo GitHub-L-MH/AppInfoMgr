@@ -8,6 +8,7 @@
         <setting name="cacheEnabled" value="true"/>
         <setting name="autoMappingBehavior" value="FULL"/>
         <setting name="lazyLoadingEnabled" value="false"/>
+        <setting name="logImpl" value="LOG4J"/>
     </settings>
     <typeAliases>
         <package name="com.app.pojo"/>
