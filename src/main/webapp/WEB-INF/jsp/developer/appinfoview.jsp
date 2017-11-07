@@ -170,7 +170,7 @@
 									<td tabindex="0" class="sorting_1">${appVersion.appName}</td>
 									<td>${appVersion.versionNo }</td>
 									<td>${appVersion.versionSize }</td>
-									<td>${appVersion.publishStatusName }</td>
+									<td>${appVersion.publishStatus }</td>
 									<td>
 									<a href="${appVersion.downloadLink }">${appVersion.apkFileName }</a>
 									</td>

@@ -16,24 +16,26 @@ public class AppVersion {
     private Date modifyDate;
     private String apkLocPath;
     private String apkFileName;
+    private String appName;
 
     public AppVersion() {
     }
 
-    public AppVersion(Integer id, Integer appId, String versionNo, String versionInfo, Integer publishStatus, String downloadLink, Double versionSize, Integer createdBy, Date creationDate, Integer modifyBy, Date modifyDate, String apkLocPath, String apkFileName) {
-        this.id=id;
-        this.appId=appId;
-        this.versionNo=versionNo;
-        this.versionInfo=versionInfo;
-        this.publishStatus=publishStatus;
-        this.downloadLink=downloadLink;
-        this.versionSize=versionSize;
-        this.createdBy=createdBy;
-        this.creationDate=creationDate;
-        this.modifyBy=modifyBy;
-        this.modifyDate=modifyDate;
-        this.apkLocPath=apkLocPath;
-        this.apkFileName=apkFileName;
+    public AppVersion(Integer id, Integer appId, String versionNo, String versionInfo, Integer publishStatus, String downloadLink, Double versionSize, Integer createdBy, Date creationDate, Integer modifyBy, Date modifyDate, String apkLocPath, String apkFileName, String appName) {
+        this.id = id;
+        this.appId = appId;
+        this.versionNo = versionNo;
+        this.versionInfo = versionInfo;
+        this.publishStatus = publishStatus;
+        this.downloadLink = downloadLink;
+        this.versionSize = versionSize;
+        this.createdBy = createdBy;
+        this.creationDate = creationDate;
+        this.modifyBy = modifyBy;
+        this.modifyDate = modifyDate;
+        this.apkLocPath = apkLocPath;
+        this.apkFileName = apkFileName;
+        this.appName = appName;
     }
 
     public Integer getId() {
@@ -140,23 +142,31 @@ public class AppVersion {
         this.apkFileName = apkFileName;
     }
 
+    public String getAppName() {
+        return appName;
+    }
+
+    public void setAppName(String appName) {
+        this.appName = appName;
+    }
 
     @Override
     public String toString() {
         return "AppVersion{" +
-                "id='" + id + '\'' +
-                "appId='" + appId + '\'' +
-                "versionNo='" + versionNo + '\'' +
-                "versionInfo='" + versionInfo + '\'' +
-                "publishStatus='" + publishStatus + '\'' +
-                "downloadLink='" + downloadLink + '\'' +
-                "versionSize='" + versionSize + '\'' +
-                "createdBy='" + createdBy + '\'' +
-                "creationDate='" + creationDate + '\'' +
-                "modifyBy='" + modifyBy + '\'' +
-                "modifyDate='" + modifyDate + '\'' +
-                "apkLocPath='" + apkLocPath + '\'' +
-                "apkFileName='" + apkFileName + '\'' +
+                "id=" + id +
+                ", appId=" + appId +
+                ", versionNo='" + versionNo + '\'' +
+                ", versionInfo='" + versionInfo + '\'' +
+                ", publishStatus=" + publishStatus +
+                ", downloadLink='" + downloadLink + '\'' +
+                ", versionSize=" + versionSize +
+                ", createdBy=" + createdBy +
+                ", creationDate=" + creationDate +
+                ", modifyBy=" + modifyBy +
+                ", modifyDate=" + modifyDate +
+                ", apkLocPath='" + apkLocPath + '\'' +
+                ", apkFileName='" + apkFileName + '\'' +
+                ", appName='" + appName + '\'' +
                 '}';
     }
 }

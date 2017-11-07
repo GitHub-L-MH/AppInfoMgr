@@ -61,7 +61,7 @@ $("#queryCategoryLevel2").change(function () {
 
 $(".addVersion").on("click", function () {
     var obj = $(this);
-    window.location.href = "appversionadd?id=" + obj.attr("appinfoid");
+    window.location.href = path+"appVersion/appversionadd?id=" + obj.attr("appinfoid");
 });
 $(".modifyVersion").on("click", function () {
     var obj = $(this);
@@ -103,8 +103,8 @@ $(document).on("click", ".saleSwichOpen,.saleSwichClose", function () {
 
 var saleSwitchAjax = function (appId, obj) {
     $.ajax({
-        type: "PUT",
-        url: appId + "/sale.json",
+        type: "POST",
+        url: path+"dev/"+appId + "/sale.json",
         dataType: "json",
         success: function (data) {
             /*
@@ -172,7 +172,7 @@ var saleSwitchAjax = function (appId, obj) {
 
 $(".viewApp").on("click", function () {
     var obj = $(this);
-    window.location.href = "appview/" + obj.attr("appinfoid");
+    window.location.href = path+"appVersion/appview/" + obj.attr("appinfoid");
 });
 
 $(".deleteApp").on("click", function () {
@@ -180,13 +180,14 @@ $(".deleteApp").on("click", function () {
     if (confirm("你确定要删除APP应用【" + obj.attr("appsoftwarename") + "】及其所有的版本吗？")) {
         $.ajax({
             type: "GET",
-            url: "delapp.json",
+            url: path+"dev/delapp.json",
             data: {id: obj.attr("appinfoid")},
             dataType: "json",
             success: function (data) {
                 if (data.delResult == "true") {//删除成功：移除删除行
                     alert("删除成功");
                     obj.parents("tr").remove();
+                    window.location.reload(true);
                 } else if (data.delResult == "false") {//删除失败
                     alert("对不起，删除AAP应用【" + obj.attr("appsoftwarename") + "】失败");
                 } else if (data.delResult == "notexist") {

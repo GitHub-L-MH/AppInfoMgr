@@ -28,10 +28,10 @@
     <div class="login_wrapper">
       <h1>APP信息管理平台</h1>
       <div>
-      <a href="manager/login" class="btn btn-link">后台管理系统 入口</a>
+      <a href="back/login" class="btn btn-link">后台管理系统 入口</a>
       </div>
       <div>
-      <a href="dev/login" class="btn btn-link">开发者平台 入口</a>
+      <a href="devlogin/login" class="btn btn-link">开发者平台 入口</a>
       </div>
     </div>
   </body>

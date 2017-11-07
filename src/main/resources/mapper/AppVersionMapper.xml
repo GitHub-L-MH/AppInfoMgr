@@ -39,7 +39,7 @@
     </update>
 
     <select id="getAppVersionCount" parameterType="map" resultType="int">
-        SELECT COUNT(1) FROM app_version
+        SELECT COUNT(1) FROM app_version av
         <include refid="appVersion_where" />
     </select>
 
@@ -48,24 +48,25 @@
     </select>
 
     <select id="getAppVersionByMap" parameterType="map" resultType="AppVersion">
-        SELECT * FROM app_version
+        SELECT * FROM app_version av
         <include refid="appVersion_where" />
     </select>
 
     <select id="getAppVersionListByObj" parameterType="map" resultType="AppVersion">
-        SELECT * from app_version
+        SELECT *,ai.softwareName AS appName from app_version av
+        INNER JOIN app_info ai ON av.appId = ai.id
         <include refid="appVersion_where" />
     </select>
 
     <select id="getAppVersionPageByMap" parameterType="map" resultType="AppVersion">
-        SELECT * from app_version
+        SELECT * from app_version av
         <include refid="appVersion_where" />
         limit #{currPageNo},#{pageSize}
     </select>
 
     <sql id="appVersion_where">
         <trim prefix="where" prefixOverrides="and | or">
-            <if test="id != null">and id = #{id}</if>
+            <if test="id != null">and av.id = #{id}</if>
             <if test="appId != null">and appId = #{appId}</if>
             <if test="versionNo != null">and versionNo = #{versionNo}</if>
             <if test="versionInfo != null">and versionInfo = #{versionInfo}</if>
