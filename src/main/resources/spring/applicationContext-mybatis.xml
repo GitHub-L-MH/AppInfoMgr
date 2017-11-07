@@ -34,6 +34,28 @@
         <property name="numTestsPerEvictionRun" value="${maxActive}"/>
     </bean>
 
+    <!--配置redis开始-->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="${redis.maxIdle}"/>
+        <property name="testOnBorrow" value="true"/>
+        <property name="testWhileIdle" value="true"/>
+    </bean>
+
+    <!--配置jedisPool连接池-->
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg ref="jedisPoolConfig"/>
+        <constructor-arg value="${redis.ip}"/>
+        <constructor-arg value="${redis.port}"/>
+        <constructor-arg value="${redis.timeout}"/>
+        <constructor-arg value="${redis.pass}"/>
+        <constructor-arg value="${redis.default.db}"/>
+    </bean>
+    <!--配置redisAPI bean-->
+    <bean id="redisAPI" class="com.app.tools.RedisAPI">
+        <property name="jedisPool" ref="jedisPool"/>
+    </bean>
+
+
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
